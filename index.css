@@ -30,5 +30,22 @@ h1.time {
 
 .crypto {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    /* Align logo and text content at the top */
+}
+
+.crypto img {
+    margin-right: 10px;
+    /* Space between the logo and the text */
+}
+
+.crypto-details {
+    display: flex;
+    flex-direction: column;
+    /* Stack crypto name and details vertically */
+}
+
+.crypto-top {
+    margin-top: 5px;
+    /* Space between the crypto name and additional details */
 }

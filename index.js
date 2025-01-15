@@ -26,16 +26,24 @@ fetch("https://api.coingecko.com/api/v3/coins/ethereum")
         return res.json()
     })
     .then(data => {
-        /**
-         * Challenge: Add the name and icon of the cryptocurrency
-         * to the upper-left of the dashboard page
-         * 
-         * Use `data.name` and `data.image.small` to access that info
-         */
         console.log(data)
         document.getElementById("logo").src = data.image.small
         document.getElementById("crypto").textContent = data.name
 
+        /**
+         * Challenge: Add the following data points underneath the 
+         * name and icon (1 paragraph each):
+         * 
+         * 1. Current price (data.market_data.current_price.usd)
+         * 2. 24-hour high price (data.market_data.high_24h.usd)
+         * 3. 24-hour low price (data.market_data.low_24h.usd)
+         * 
+         * Feel free to check the response data object for your own currency
+         * if you don't want to use USD.
+         */
+        document.getElementById("price").textContent = `$ ${data.market_data.current_price.usd}`
+        document.getElementById("high-price").textContent = `$ ${data.market_data.high_24h.usd}`
+        document.getElementById("low-price").textContent = `$ ${data.market_data.low_24h.usd}`
 
     })
     .catch(err => {
