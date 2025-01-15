@@ -27,3 +27,8 @@ div.top {
 h1.time {
     text-align: center;
 }
+
+.crypto {
+    display: flex;
+    align-items: center;
+}
