@@ -1,7 +1,13 @@
-fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
+fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=natureasdfasdf")
     .then(res => res.json())
     .then(data => {
-        document.body.style.backgroundImage = `url(${data.urls.regular})`
+        console.log(data.urls.full)
+        document.body.style.backgroundImage = `url(${data.urls.full})`
         document.getElementById("author").textContent = `By: ${data.user.name}`
+    })
+    .catch(err => {
+        console.log(err)
+        document.body.style.backgroundImage = `url(https://images.unsplash.com/photo-1736159427273-189b0e49f19b?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxNDI0NzB8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MzY5NTQ1ODh8&ixlib=rb-4.0.3&q=85)`
+        document.getElementById("author").textContent = `By: Andrea De Santis`
     })
 
