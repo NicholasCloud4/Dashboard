@@ -38,17 +38,6 @@ fetch("https://api.coingecko.com/api/v3/coins/ethereum")
         console.log(err)
     })
 
-/**
-* Challenge: log the current time to the console, formatted
-* like this:
-* 
-* 1:30 PM
-* 
-* Use Google and Stack Overflow to find the best way.
-* 
-* Good luck! 👍
-*/
-
 function getCurrentTime() {
     const now = new Date()
     const currentTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -56,6 +45,32 @@ function getCurrentTime() {
 }
 
 setInterval(getCurrentTime, 1000)
+
+/**
+ * Challenge: Learn how to access the user's coordinates
+ * by using the Geolocation Web API!
+ * 
+ * Log the user's position to the console.
+ */
+
+
+navigator.geolocation.getCurrentPosition((position) => {
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    console.log(latitude, longitude);
+
+    fetch(`https://apis.scrimba.com/openweathermap/data/2.5/weather?lat=${latitude}&lon=${longitude}`)
+        .then(res => {
+            if (!res.ok) {
+                throw Error("Weather data not available")
+            }
+            return res.json()
+        })
+        .then(data => console.log(data))
+        .catch(err => console.error(err))
+});
+
+
 
 
 
