@@ -66,9 +66,27 @@ navigator.geolocation.getCurrentPosition((position) => {
             }
             return res.json()
         })
-        .then(data => console.log(data))
+        .then(data => {
+            console.log(data)
+            let icon = data.weather[0].icon
+            document.getElementById("weather").src = `http://openweathermap.org/img/wn/${icon}@2x.png`
+            document.getElementById("city").textContent = data.name
+
+            let fahrenheit = Math.round((data.main.temp * 9 / 5) + 32)
+            document.getElementById("temperature").textContent = `${fahrenheit} °F`
+        })
         .catch(err => console.error(err))
+
+
 });
+
+/**
+ * Challenge: Display the temperature (rounded to the nearest degree)
+ * and the city. Don't worry about the layout for now.
+ */
+
+
+
 
 
 
