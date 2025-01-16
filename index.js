@@ -29,18 +29,6 @@ fetch("https://api.coingecko.com/api/v3/coins/ethereum")
         console.log(data)
         document.getElementById("logo").src = data.image.small
         document.getElementById("crypto").textContent = data.name
-
-        /**
-         * Challenge: Add the following data points underneath the 
-         * name and icon (1 paragraph each):
-         * 
-         * 1. Current price (data.market_data.current_price.usd)
-         * 2. 24-hour high price (data.market_data.high_24h.usd)
-         * 3. 24-hour low price (data.market_data.low_24h.usd)
-         * 
-         * Feel free to check the response data object for your own currency
-         * if you don't want to use USD.
-         */
         document.getElementById("price").textContent = `$ ${data.market_data.current_price.usd}`
         document.getElementById("high-price").textContent = `$ ${data.market_data.high_24h.usd}`
         document.getElementById("low-price").textContent = `$ ${data.market_data.low_24h.usd}`
@@ -49,4 +37,25 @@ fetch("https://api.coingecko.com/api/v3/coins/ethereum")
     .catch(err => {
         console.log(err)
     })
+
+/**
+* Challenge: log the current time to the console, formatted
+* like this:
+* 
+* 1:30 PM
+* 
+* Use Google and Stack Overflow to find the best way.
+* 
+* Good luck! 👍
+*/
+
+function getCurrentTime() {
+    const now = new Date()
+    const currentTime = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    document.getElementsByClassName("time")[0].textContent = currentTime
+}
+
+setInterval(getCurrentTime, 1000)
+
+
 
